@@ -1,0 +1,83 @@
+﻿@page
+@model BankWebApp.Pages.Users.UserCreateModel
+@{
+    ViewData["Title"] = "- Create User";
+
+}
+<div class="row">
+    <div class="col-md-4">
+        <section class="section-fixed">
+            <div id="page-section-1" class="section-rel-fixed">
+                <div class="login-card">
+                    <div class="table-meta-flex">
+                        <a class="page-navigator-back-btn"
+                           asp-page="/Users/Users">
+                            <i class="fa-solid fa-arrow-left"></i>
+                        </a>
+                        <div class="page-name font-weight-4">
+                            Create a new user
+                        </div>
+                    </div>
+                    <div class="form-box-container">
+                        <form method="post">
+                            <div class="form-box">
+                                <div class="form-box-inner">
+                                    <div>
+                                        <label asp-for="@Model.User.Email"></label>
+                                    </div>
+                                    <div>
+                                        <input type="email" asp-for="@Model.User.Email">
+                                    </div>
+                                    <div class="form-box-span">
+                                        <span asp-validation-for="@Model.User.Email"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-box">
+                                <div class="form-box-inner">
+                                    <div>
+                                        <label asp-for="@Model.Password">Password</label>
+                                    </div>
+                                    <div>
+                                        <input type="password" asp-for="@Model.Password">
+                                    </div>
+                                    <div class="form-box-span">
+                                        <span asp-validation-for="@Model.Password"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-box">
+                                <div class="form-box-inner">
+                                    <div>
+                                        <label asp-for="@Model.User.Roles"></label>
+                                    </div>
+                                    <div>
+                                        <select asp-for="@Model.Role" asp-items="@Model.RoleList">
+                                            <option value="">--Select Role--</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-box-span">
+                                        <span asp-validation-for="@Model.Role"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-box">
+                                <div class="form-box-inner">
+                                    <div class="form-btn">
+                                        <button class="font-weight-2" type="submit">Create User</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+

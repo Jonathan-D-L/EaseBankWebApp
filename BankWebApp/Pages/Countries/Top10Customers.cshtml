@@ -1,0 +1,47 @@
+﻿@page
+@model Top10CustomersModel
+@{
+    ViewData["Title"] = $"- Top 10 Clients {Model.Country}";
+}
+
+
+<section class="section-fixed">
+    <div id="page-section-1" class="section-rel-fixed">
+        <div class="center-content-col cust-data-view-top10">
+            <h1>TOP 10 CLIENTS @Model.Country.ToUpper()</h1>
+            <div class="page-flex">
+                <div class="page-name font-weight-4">
+                    <a class="page-navigator-back-btn"
+                       asp-page="/Index">
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </a>
+                </div>
+                <table class="data-table-top10">
+                    <thead>
+                        <tr class="cust-meta-top10">
+                            <th class="cust-meta-record-top10"></th>
+                            <th class="cust-meta-record-top10">Country</th>
+                            <th class="cust-meta-record-top10">Name</th>
+                            <th class="cust-meta-record-top10">Balance</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var cust in Model.Top10Customers)
+                        {
+                            <tr class="cust-data-top10-shadow">
+                            </tr>
+                            <tr class="cust-data-top10" onclick="location.href='@Url.Page("/Customers/Customer", new { cust.CustomerId })'" asp-page="/Customers/Customers" asp-route-customerId="@cust.CustomerId">
+                                <td class="cust-data-record-top10 flag-icon-top10"><img src="@Model.Flag" alt="@Model.Country" /></td>
+                                <td class="cust-data-record-top10 flag-icon-top10">@Model.Country</td>
+                                <td class="cust-data-record-top10">@cust.GivenName @cust.SurName</td>
+                                <td class="cust-data-record-top10">@cust.Balance .@Model.Currency</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+<div style="height: 1000px"></div>
+

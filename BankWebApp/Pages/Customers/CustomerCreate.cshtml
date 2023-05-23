@@ -1,0 +1,309 @@
+﻿@page
+@model BankWebApp.Pages.Customers.CustomerCreateModel
+@{
+    ViewData["Title"] = "- Create Client";
+    var successMsg = TempData["Message"]?.ToString();
+    var errorMsg = ViewData["Message"]?.ToString();
+}
+
+<section class="section-fixed">
+    <div id="page-section-1" class="section-rel-fixed">
+        <div class="customer-card">
+            <div class="customer-card-meta-flex">
+                <a class="page-navigator-back-btn"
+                   asp-page="/Customers/Customers">
+                    <i class="fa-solid fa-arrow-left"></i>
+                </a>
+                <div class="font-weight-4">
+                    REGISTER NEW CLIENT
+                </div>
+            </div>
+            <div class="form-wrapper">
+                <form method="post">
+                    @if (!string.IsNullOrWhiteSpace(successMsg))
+                    {
+                        <div class="success-msg font-weight-3">
+                            @successMsg
+                        </div>
+                    }
+                    else if (!string.IsNullOrWhiteSpace(errorMsg))
+                    {
+                        <div class="error-msg font-weight-3">
+                            @errorMsg
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="success-msg-placeholder">
+                        </div>
+                    }
+                    <div class="form-grid">
+                        <div class="form-section">
+                            <div class="form-pair">
+                                <div class="form-box">
+                                    <div class="form-box-inner">
+                                        <div>
+                                            <label asp-for="@Model.Customer.GivenName"></label>
+                                        </div>
+                                        <div>
+                                            <input type="text" asp-for="@Model.Customer.GivenName" placeholder="" class="" />
+                                        </div>
+                                    </div>
+                                    <div class="form-box-span">
+                                        <span asp-validation-for="@Model.Customer.GivenName"></span>
+                                    </div>
+                                </div>
+                                <div class="form-box">
+                                    <div class="form-box-inner-1">
+                                        <div>
+                                            <label asp-for="@Model.Customer.SurName"></label>
+                                        </div>
+                                        <div>
+                                            <input type="text" asp-for="@Model.Customer.SurName" placeholder="" class="" />
+                                        </div>
+                                    </div>
+                                    <div class="form-box-span">
+                                        <span asp-validation-for="@Model.Customer.SurName"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-pair">
+                                <div class="form-box">
+                                    <div class="form-box-inner">
+                                        <div>
+                                            <label asp-for="@Model.Customer.Gender"></label>
+                                        </div>
+                                        <div>
+                                            <select asp-for="@Model.Customer.Gender" asp-items="@Model.Gender" class="">
+                                                <option value="">-- select --</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-box-span">
+                                        <span asp-validation-for="@Model.Customer.Gender"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-pair">
+                                <div class="form-box">
+                                    <div class="form-box-inner">
+                                        <div>
+                                            <label asp-for="@Model.Customer.Telephonenumber"></label>
+                                        </div>
+                                        <div>
+                                            <input type="text" asp-for="@Model.Customer.Telephonenumber" placeholder="" class="" />
+                                        </div>
+                                    </div>
+                                    <div class="form-box-span">
+                                        <span asp-validation-for="@Model.Customer.Telephonenumber"></span>
+                                    </div>
+                                </div>
+                                <div class="form-box">
+                                    <div class="form-box-inner-1">
+                                        <div>
+                                            <label asp-for="@Model.Customer.Emailaddress"></label>
+                                        </div>
+                                        <div>
+                                            <input type="email" asp-for="@Model.Customer.Emailaddress" placeholder="" class="" />
+                                        </div>
+                                    </div>
+                                    <div class="form-box-span">
+                                        <span asp-validation-for="@Model.Customer.Emailaddress"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-section">
+                            <div class="form-pair">
+                                <div class="form-box">
+                                    <div class="birthdate-picker">
+                                        <div class="form-box-inner">
+                                            <div class="form-box-inner">
+                                                <div>
+                                                    <label asp-for="@Model.Customer.Birthday"></label>
+                                                </div>
+                                                <div>
+                                                    <input id="birthday-input" type="hidden" value="" asp-for="@Model.Customer.Birthday" />
+                                                    <select id="birth-year">
+                                                        <option value="">year</option>
+                                                    </select>
+                                                    <select id="birth-month">
+                                                        <option value="">month</option>
+                                                    </select>
+                                                    <select id="birth-day">
+                                                        <option value="">day</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-box-span">
+                                            <span asp-validation-for="@Model.Customer.Birthday"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-box">
+                                    <div class="form-box-inner">
+                                        <div>
+                                            <label asp-for="@Model.Customer.NationalId"></label>
+                                        </div>
+                                        <div>
+                                            <input type="text" asp-for="@Model.Customer.NationalId" placeholder="" class="" />
+                                        </div>
+                                    </div>
+                                    <div class="form-box-span">
+                                        <span asp-validation-for="@Model.Customer.NationalId"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-pair">
+                                <div class="form-box">
+                                    <div class="form-box-inner">
+                                        <div>
+                                            <label asp-for="@Model.Customer.Country"></label>
+                                        </div>
+                                        <div>
+                                            <select asp-for="@Model.Customer.Country" asp-items="@Model.Country" class="">
+                                                <option value="">-- select --</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-box-span">
+                                        <span asp-validation-for="@Model.Customer.Country"></span>
+                                    </div>
+                                </div>
+                                <div class="form-box">
+                                    <div class="form-box-inner">
+                                        <div>
+                                            <label asp-for="@Model.Customer.City"></label>
+                                        </div>
+                                        <div>
+                                            <input type="text" asp-for="@Model.Customer.City" placeholder="" class="" />
+                                        </div>
+                                    </div>
+                                    <div class="form-box-span">
+                                        <span asp-validation-for="@Model.Customer.City"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-pair">
+                                <div class="form-box">
+                                    <div class="form-box-inner">
+                                        <div>
+                                            <label asp-for="@Model.Customer.StreetAddress"></label>
+                                        </div>
+                                        <div>
+                                            <input type="text" asp-for="@Model.Customer.StreetAddress" placeholder="" class="" />
+                                        </div>
+                                    </div>
+                                    <div class="form-box-span">
+                                        <span asp-validation-for="@Model.Customer.StreetAddress"></span>
+                                    </div>
+                                </div>
+                                <div class="form-box">
+                                    <div class="form-box-inner">
+                                        <div>
+                                            <label asp-for="@Model.Customer.Zipcode"></label>
+                                        </div>
+                                        <div>
+                                            <input type="text" asp-for="@Model.Customer.Zipcode" placeholder="" class="" />
+                                        </div>
+                                    </div>
+                                    <div class="form-box-span">
+                                        <span asp-validation-for="@Model.Customer.Zipcode"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-btn">
+                        <button class="font-weight-3" type="submit" asp-page-handler="Create">
+                            <div class="pulsate">
+                                save
+                            </div>
+                        </button>
+                    </div>
+                    <img class="customer-img" src="/images/bridge-city-bg.jpg" alt="bridge city in background" />
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts
+    {
+    <script>
+        var daysInMonth = {
+            1: 31,
+            2: 28,
+            3: 31,
+            4: 30,
+            5: 31,
+            6: 30,
+            7: 31,
+            8: 31,
+            9: 30,
+            10: 31,
+            11: 30,
+            12: 31
+        };
+
+        var currentYear = new Date().getFullYear();
+        var yearSelect = document.getElementById("birth-year");
+        var monthSelect = document.getElementById("birth-month");
+        var daySelect = document.getElementById("birth-day");
+
+        for (var i = currentYear; i >= currentYear - 100; i--) {
+            var option = document.createElement("option");
+            option.value = i;
+            option.textContent = i;
+            yearSelect.appendChild(option);
+        }
+
+        for (var i = 1; i <= 12; i++) {
+            var option = document.createElement("option");
+            option.value = i;
+            option.textContent = i;
+            monthSelect.appendChild(option);
+        }
+
+        yearSelect.addEventListener("change", updateDays);
+        monthSelect.addEventListener("change", updateDays);
+        yearSelect.addEventListener("change", updateBirthdayInput);
+        monthSelect.addEventListener("change", updateBirthdayInput);
+        daySelect.addEventListener("change", updateBirthdayInput);
+
+        function updateDays() {
+            var year = yearSelect.value;
+            var month = monthSelect.value;
+            var days = daysInMonth[month];
+
+            if (month == 2 && isLeapYear(year)) {
+                days = 29;
+            }
+
+            while (daySelect.firstChild) {
+                daySelect.removeChild(daySelect.firstChild);
+            }
+
+            var dayOption = document.createElement("option");
+            dayOption.value = "";
+            dayOption.textContent = "day";
+            daySelect.appendChild(dayOption);
+
+            for (var i = 1; i <= days; i++) {
+                var option = document.createElement("option");
+                option.value = i;
+                option.textContent = i;
+                daySelect.appendChild(option);
+            }
+        }
+        function updateBirthdayInput() {
+            var year = yearSelect.value;
+            var month = monthSelect.value;
+            var day = daySelect.value;
+            var date = year + "-" + month + "-" + day;
+            document.getElementById("birthday-input").value = date;
+        }
+    </script>
+    <partial name="Shared/_ValidationScriptsPartial" />
+}

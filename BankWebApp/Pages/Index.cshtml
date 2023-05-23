@@ -1,0 +1,164 @@
+﻿@page
+@model BankWebApp.Pages.IndexModel
+@{
+    ViewData["Title"] = "- Home";
+}
+
+<section class="section-fixed">
+    <div id="page-section-1" class="section-rel-fixed">
+        <div class="headline">
+            <div class="letters">
+                <div class="letter">S</div>
+                <div class="letter">I</div>
+                <div class="letter">M</div>
+                <div class="letter">P</div>
+                <div class="letter">L</div>
+                <div class="letter">I</div>
+                <div class="letter">F</div>
+                <div class="letter">Y</div>
+            </div>
+            <h1 class="title">Welcome to Ease, your financial partner.</h1>
+            <div class="letters">
+                <div class="letter">B</div>
+                <div class="letter">A</div>
+                <div class="letter">N</div>
+                <div class="letter">K</div>
+                <div class="letter">I</div>
+                <div class="letter">N</div>
+                <div class="letter">G</div>
+            </div>
+        </div>
+        <div class="data-display">
+            <div class="data-grid">
+                <a asp-area="" asp-page="/Countries/Top10Customers" asp-route-countryCode="SE">
+                    <div class="data-box" id="data-box-1">
+                        <div class="flag-img">
+                            <img src="images/se.png" alt="Swedish Flag" />
+                        </div>
+                        <div class="data">
+                            <div class="text-effect">
+                                <div class="text-left">Clients</div>
+                                <div class="text-right">@Model.CustomerDataSE.TotalCustomersSE</div>
+                            </div>
+                            <div class="text-effect">
+                                <div class="text-left">Accounts</div>
+                                <div class="text-right">@Model.CustomerDataSE.TotalAccountsSE</div>
+                            </div>
+                            <div class="text-effect">
+                                <div class="text-left">Capital .SEK</div>
+                                <div class="text-right">@Model.CustomerDataSE.TotalAccountsValueSE</div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <a asp-area="" asp-page="/Countries/Top10Customers" asp-route-countryCode="DK">
+                    <div class="data-box" id="data-box-2">
+                        <div class="flag-img">
+                            <img src="images/dk.png" alt="Danish Flag" />
+                        </div>
+                        <div class="data">
+                            <div class="text-effect">
+                                <div class="text-left">Clients</div>
+                                <div class="text-right">@Model.CustomerDataDK.TotalCustomersDK</div>
+                            </div>
+                            <div class="text-effect">
+                                <div class="text-left">Accounts</div>
+                                <div class="text-right">@Model.CustomerDataDK.TotalAccountsDK</div>
+                            </div>
+                            <div class="text-effect">
+                                <div class="text-left">Capital .SEK</div>
+                                <div class="text-right">@Model.CustomerDataDK.TotalAccountsValueDK</div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <a asp-area="" asp-page="/Countries/Top10Customers" asp-route-countryCode="NO">
+                    <div class="data-box" id="data-box-3">
+                        <div class="flag-img">
+                            <img src="images/no.png" alt="Norwegian Flag" />
+                            <div class="flag-text"><i class="fa-sharp fa-solid fa-coins"></i></div>
+                        </div>
+                        <div class="data">
+                            <div class="text-effect">
+                                <div class="text-left">Clients</div>
+                                <div class="text-right">@Model.CustomerDataNO.TotalCustomersNO</div>
+                            </div>
+                            <div class="text-effect">
+                                <div class="text-left">Accounts</div>
+                                <div class="text-right">@Model.CustomerDataNO.TotalAccountsNO</div>
+                            </div>
+                            <div class="text-effect">
+                                <div class="text-left">Capital .SEK</div>
+                                <div class="text-right">@Model.CustomerDataNO.TotalAccountsValueNO</div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <a asp-area="" asp-page="Countries/Top10Customers" asp-route-countryCode="FI">
+                    <div class="data-box" id="data-box-4">
+                        <div class="flag-img">
+                            <img src="images/fi.png" alt="Finnish" />
+                            <div class="flag-text"><i class="fa-sharp fa-solid fa-coins"></i></div>
+                        </div>
+                        <div class="data">
+                            <div class="text-effect">
+                                <div class="text-left">Clients</div>
+                                <div class="text-right">@Model.CustomerDataFI.TotalCustomersFI</div>
+                            </div>
+                            <div class="text-effect">
+                                <div class="text-left">Accounts</div>
+                                <div class="text-right">@Model.CustomerDataFI.TotalAccountsFI</div>
+                            </div>
+                            <div class="text-effect">
+                                <div class="text-left">Capital .SEK</div>
+                                <div class="text-right">@Model.CustomerDataFI.TotalAccountsValueFI</div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section-fixed">
+    <div id="page-section-2" class="section-rel-fixed">
+        <div class="card-links">
+            <a class="card-link" href="https://www.linkedin.com/in/jonathan-donath-lopez-1a42b9253?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BkKYnRIeeRxGOObAyxP6Weg%3D%3D">
+                <div class="placeholder-boxm">
+                    <div class="placeholder-textm">
+                        <div class="textm1">CONTACT ME</div>
+                        <div class="textm2">CONTACT ME</div>
+                        <div class="textm3">
+                            <div>
+                                <i class="fa-brands fa-linkedin"></i> Linked In
+                            </div>
+                            <div>
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a class="card-link" href="https://github.com/Jonathan-D-L">
+                <div class="placeholder-boxm">
+                    <div class="placeholder-textm">
+                        <div class="textm1">OTHER PROJECTS</div>
+                        <div class="textm2">OTHER PROJECTS</div>
+                        <div class="textm3">
+                            <div>
+                                <i class="fa-brands fa-square-github"></i> Github
+                            </div>
+                            <div>
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <img class="card-img" src="/images/birdsview-city.jpg" alt="birds view city" />
+        </div>
+    </div>
+</section>
+<div style="height: 2000px"></div>
+

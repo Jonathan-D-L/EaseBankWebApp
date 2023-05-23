@@ -1,0 +1,223 @@
+﻿.login-card {
+    color: #ffb121;
+    border: 1px solid #ffb121;
+    border-radius: 5px;
+    padding: 5px 10px;
+    background: rgba(28, 27, 34, 0.5);
+    backdrop-filter: blur(20px);
+    margin-top: -2%;
+    width: 500px;
+    padding: 20px 30px;
+}
+.form-box-container {
+    background: #1c1b22;
+}
+
+::deep form {
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-decoration: none;
+    border: 1px solid #ffb121;
+    border-radius: 5px;
+}
+
+::deep form input {
+    background: #1c1b22;
+    color: #ffb121;
+    border: 1px solid #ffb121;
+    border-radius: 5px;
+    outline: none;
+}
+
+    ::deep form input:focus {
+        color: #1c1b22;
+        background: #ffb121;
+        outline: 0;
+    }
+
+    ::deep form input::checked {
+        color: #1c1b22;
+        background: #ffb121;
+    }
+
+::deep form button {
+    background: #1c1b22;
+    color: #ffb121;
+    border: 1px solid #ffb121;
+    border-radius: 5px;
+    outline: none;
+}
+
+    ::deep form button:hover {
+        color: #1c1b22;
+        background: #ffb121;
+    }
+
+::deep a {
+    text-decoration: none;
+    color: #ffb121;
+}
+
+    ::deep a:hover {
+        color: white;
+    }
+
+/*font*/
+.font-weight-0 {
+    font-size: 11px;
+    font-weight: 600;
+}
+
+::deep .font-weight-0 {
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.font-weight-1 {
+    font-weight: 600;
+}
+
+.font-weight-2 {
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.font-weight-4 {
+    font-weight: 700;
+    font-size: 32px;
+}
+
+
+
+::deep .font-weight-1 {
+    font-weight: 600;
+}
+
+::deep .font-weight-2 {
+    font-weight: 600;
+    font-size: 18px;
+}
+
+::deep .font-weight-3 {
+    font-weight: 700;
+    font-size: 22px;
+}
+
+::deep .font-weight-4 {
+    font-weight: 700;
+    font-size: 32px;
+}
+
+/*font*/
+
+.form-box {
+    width: 100%;
+    padding: 0 10px;
+    margin-bottom: 10px;
+}
+
+::deep .form-box-inner {
+    width: 100%;
+    padding: 5px 10px;
+    margin-bottom: 5px;
+}
+
+::deep input {
+    width: 100%;
+    padding: 5px;
+}
+
+.form-box-check {
+    width: 100%;
+    padding: 0 10px;
+    margin-top: 20px;
+}
+
+::deep button {
+    width: 100%;
+    padding: 5px;
+    transition: all 0.2s;
+}
+
+
+::deep form-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+::deep .form-box-inner {
+    margin-right: 10px;
+}
+
+::deep .form-box-inner-1 {
+    margin-right: 50px;
+}
+
+::deep .form-box-span {
+    height: 25px;
+    color: white;
+}
+
+
+::deep select {
+    outline: none;
+    max-height: 100px;
+    overflow-y: auto;
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ffb121;
+    border-radius: 5px;
+    color: #ffb121;
+    background: #1c1b22;
+    -webkit-padding-start: 8px;
+    -webkit-box-shadow: none;
+    box-shadow: 0 3px 6px 2px rgba(28, 27, 34, 0.5);
+}
+
+
+::deep select::-webkit-scrollbar {
+    width: 5px;
+    background: rgba(0, 0, 0, 0.5);
+    color: #1c1b22;
+    background: #1c1b22;
+}
+
+::deep select::-webkit-scrollbar-thumb {
+    background: #ffb121;
+    border-radius: 50px;
+}
+
+.table-meta-flex {
+    display: flex;
+    background: #1c1b22;
+    border: 1px solid #ffb121;
+    border-radius: 5px;
+    padding: 5px;
+}
+/*btn*/
+
+::deep a {
+    text-decoration: none;
+}
+
+::deep .page-navigator-back-btn i {
+    color: #ffb121;
+    font-size: 20px;
+    border: 2px solid #ffb121;
+    transition: all 0.25s;
+    margin: 10px 10px;
+    padding: 2px 4px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+::deep .page-navigator-back-btn i:hover {
+    color: #1c1b22;
+    background: #ffb121;
+}
+
+/*btn*/

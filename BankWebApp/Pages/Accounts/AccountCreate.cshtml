@@ -1,0 +1,118 @@
+﻿@page
+@model BankWebApp.Pages.Accounts.AccountCreateModel
+@{
+    ViewData["Title"] = "- Create Account";
+    var errorMsg = ViewData["Message"]?.ToString();
+}
+
+<section class="section-fixed">
+    <div id="page-section-1" class="section-rel-fixed">
+
+        <div class="customer-card">
+            <div class="customer-card-meta-flex">
+                <a class="page-navigator-back-btn"
+                   asp-page="/Accounts/Accounts"
+                   asp-route-customerId="@Model.Customer.CustomerId">
+                    <i class="fa-solid fa-arrow-left"></i>
+                </a>
+                <div class="font-weight-4">
+                    SETUP NEW ACCOUNT
+                </div>
+            </div>
+            <div class="form-wrapper">
+             
+                <form method="post">
+                    @if (!string.IsNullOrWhiteSpace(errorMsg))
+                    {
+                        <div class="error-msg font-weight-3">
+                            @errorMsg
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="success-msg-placeholder">
+                        </div>
+                    }
+                    <div class="form-box-inner">
+                        <div class="form-box-inner-spacing">
+                            <div>
+                                <label asp-for="@Model.Frequency"></label>
+                            </div>
+                            <div>
+                                <select asp-for="@Model.Frequency" asp-items="@Model.Frequencies">
+                                    <option value="">-- select --</option>
+                                </select>
+                            </div>
+                            <div class="form-box-span">
+                                <span asp-validation-for="@Model.Frequency"></span>
+                            </div>
+                        </div>
+                        <div class="form-box-inner-spacing">
+                            <label class="" asp-for="Q">Optional - Add a disponent.</label>
+                            <div class="form-box-search-select">
+                                <div class="input-for-q">
+                                    <input class="form-space-1" asp-for="Q" placeholder="Search"/>
+                                </div>
+                                <div class="select-for-q" id="select-for-q">
+                                    <select class="form-space-2" asp-for="DisponentId" asp-items="@Model.DisponentOptions"></select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-btn">
+                        <button class="font-weight-3" type="submit" asp-page-handler="Create" asp-route-customerId="@Model.Customer.CustomerId">
+                            <div class="pulsate">
+                                create
+                            </div>
+                        </button>
+                    </div>
+                    <img class="customer-img" src="/images/sky-scrapers.jpg" alt="sky scrapers"/>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+@section Scripts
+    {
+    <script>
+        $(document).ready(function () {
+            $('#Q').on('keyup', function () {
+                var q = $(this).val();
+                $.ajax({
+                    url: '/Accounts/AccountCreate?handler=FetchInfo',
+                    data: { q: q },
+                    success: function (result) {
+                        var optionsHtml = '';
+                        optionsHtml = '<option value=""></option>' + optionsHtml;
+                        if (result.length === 0) {
+                            $('#select-for-q').css('top', '0px');
+                            $.each(result, function (index, option) {
+                                optionsHtml += '<option value="' + option.value + '">' + option.text + '</option>';
+                            });
+                            $('#DisponentId').html(optionsHtml);
+                            $('#DisponentId').prop('size', Math.min(result.length, 10));
+                        } else {
+                            $('#select-for-q').css('top', '28px');
+                            $.each(result, function (index, option) {
+                                optionsHtml += '<option value="' + option.value + '">' + option.text + '</option>';
+                            });
+                            $('#DisponentId').html(optionsHtml);
+                            $('#DisponentId').prop('size', Math.min(result.length, 10));
+                        }
+                    }
+                });
+            });
+            $('#DisponentId').on('change', function () {
+                $(this).prop('size', 1);
+                $('#select-for-q').css('top', '0px');
+            });
+            $('#Q').on('click', function () {
+                $(this).val('');
+            });
+        });
+
+
+    </script>
+
+  
+}

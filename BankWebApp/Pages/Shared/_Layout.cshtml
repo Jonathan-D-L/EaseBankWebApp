@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bank @ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/BankWebApp.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://kit.fontawesome.com/41c8b474e2.css" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+@{
+    var currentPage = Url.RouteUrl(ViewContext.RouteData.Values);
+}
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm box-shadow mb-3">
+            <div class="navbar-spacing">
+                <div class="navbar-inner-1">
+                    <a class="navbar-brand" asp-area="" asp-page="/Index">
+                            <div class="placeholder-boxm-logo">
+                                <div class="placeholder-textm-logo">
+                                    <div class="textm1-logo">EASE</div>
+                                    <div class="textm2-logo">EASE</div>
+                                    <div class="textm3-logo">
+                                        <div>
+                                            BANK
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="navbar-inner-2">
+                    <div class="nav-item">
+                        <a class="nav-link @(currentPage == "/" ? "active" : "")" asp-area="" asp-page="/Index">Home</a>
+                    </div>
+                    @if (User.IsInRole("Cashier") || User.IsInRole("Admin"))
+                    {
+                        <div class="nav-item">
+                            <a class="nav-link @(currentPage.StartsWith("/Customer") || currentPage.StartsWith("/Account")  ? "active" : "")" asp-area="" asp-page="/Customers/Customers">Clients</a>
+                        </div>
+                    }
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <div class="nav-item">
+                            <a class="nav-link @(currentPage.StartsWith("/User") ? "active" : "")" asp-area="" asp-page="/Users/Users">Users</a>
+                        </div>
+                    }
+                </div>
+                <div class="navbar-inner-3">
+                    <partial name="_LoginPartial" />
+                </div>
+            </div>
+
+        </nav>
+    </header>
+    <div>
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+    <button id="top-arrow"><i class="fa-solid fa-arrow-up"></i></button>
+    <footer class="footer text-muted">
+        <div class="container">
+            &copy; 2023 Bank. All Rights Reserved
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

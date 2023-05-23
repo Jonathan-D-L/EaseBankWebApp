@@ -1,0 +1,24 @@
+﻿@{
+    if (ViewData.TryGetValue("ParentLayout", out var parentLayout) && parentLayout != null)
+    {
+        Layout = parentLayout.ToString();
+    }
+    else
+    {
+        Layout = "/Areas/Identity/Pages/_Layout.cshtml";
+    }
+}
+
+<section class="section-fixed">
+    <div id="page-section-1" class="section-rel-fixed">
+        <div class="layout-container">
+        <div class="font-weight">Manage Account</div>
+            <partial name="_ManageNav"/>
+            @RenderBody()
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    @RenderSection("Scripts", required: false)
+}

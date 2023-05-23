@@ -1,0 +1,196 @@
+﻿@page
+@model BankWebApp.Pages.Customers.CustomerModel
+@{
+    ViewData["Title"] = "- Client";
+}
+
+
+<section class="section-fixed">
+    <div id="page-section-1" class="section-rel-fixed">
+        <div class="customer-card">
+                <div class="customer-card-flex1">
+                    <a class="page-navigator-back-btn"
+                       asp-page="/Customers/Customers" asp-route-customerId="@Model.Customer">
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </a>
+                    <div class="font-weight-4">
+                        @Model.Customer.GivenName @Model.Customer.SurName
+                    </div>
+                </div>
+            <div class="customer-card-customer">
+                <div class="customer-card-grid">
+                    <a class="customer-card-cards-2 customer-card-effect customer-card-flex customer-card-border" asp-page="/Customers/CustomerEdit" asp-route-customerId="@Model.Customer.CustomerId">
+                        <div class="customer-card-identity">
+                            <div class="font-weight-2 title-border-bottom">
+                                IDENTITY
+                                <img class="customer-card-flag" src="@Model.Flag" alt="@Model.Country flag" />
+                            </div>
+                            <div class="customer-card-spacing">
+                                <div class="spacing-first">Name</div>
+                                <div class="spacing-first-inner font-weight-1">@Model.Customer.GivenName @Model.Customer.SurName</div>
+                            </div>
+                            <div class="customer-card-spacing">
+                                <div class="spacing-first">National Id</div>
+                                <div class="spacing-first-inner font-weight-1">
+                                    @Model.Customer.NationalId
+                                </div>
+                            </div>
+                            <div class="customer-card-spacing">
+                                <div class="spacing-first">Birthday</div>
+                                <div class="spacing-first-inner font-weight-1">@Model.Customer.Birthday.Value.ToString("yyyy-MM-dd")</div>
+                            </div>
+                            <div class="customer-card-spacing">
+                                <div class="spacing-first">Gender</div>
+                                <div class="spacing-first-inner font-weight-1">@Model.Customer.Gender</div>
+                            </div>
+                        </div>
+                        <div class="customer-card-contact">
+                            <div class="font-weight-2 title-border-bottom">
+                                CONTACT
+                            </div>
+                            <div class="customer-card-spacing">
+                                <div class="spacing-first">Phone</div>
+                                <div class="spacing-first-inner font-weight-1">+@Model.Customer.Telephonecountrycode @Model.Customer.Telephonenumber</div>
+                            </div>
+                            <div class="customer-card-spacing">
+                                <div class="spacing-first">Email</div>
+                                <div class="spacing-first-inner font-weight-1">@Model.Customer.Emailaddress</div>
+                            </div>
+                        </div>
+                        <div class="customer-card-adress">
+                            <div class="font-weight-2 title-border-bottom">
+                                ADDRESS
+                            </div>
+                            <div class="customer-card-spacing">
+                                <div class="spacing-first">Street</div>
+                                <div class="spacing-first-inner font-weight-1">@Model.Customer.StreetAddress</div>
+                            </div>
+                            <div class="customer-card-spacing">
+                                <div class="spacing-first">City</div>
+                                <div class="spacing-first-inner font-weight-1">@Model.Customer.City</div>
+                            </div>
+                            <div class="customer-card-spacing">
+                                <div class="spacing-first">Zip Code</div>
+                                <div class="spacing-first-inner font-weight-1">@Model.Customer.Zipcode</div>
+                            </div>
+                            <div class="customer-card-spacing">
+                                <div class="spacing-first">Country</div>
+                                <div class="spacing-first-inner font-weight-1">@Model.Country</div>
+                            </div>
+                        </div>
+                        <img class="customer-img" src="/images/bridge.jpg" alt="bridge" />
+                        <div class="edit-hint font-weight-4">
+                            <div class="hint-text">
+                            <div>E</div>
+                            <div>D</div>
+                            <div>I</div>
+                            <div>T</div>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="customer-card-flex">
+                        <a class="customer-card-cards customer-card-effect" asp-page="/Accounts/Accounts" asp-route-customerId="@Model.Customer.CustomerId">
+                            <div class="customer-card-card">
+                                <div class="placeholder-boxm">
+                                    <div class="placeholder-textm">
+                                        <div class="textm1">ACCOUNTS</div>
+                                        <div class="textm2">ACCOUNTS</div>
+                                        <div class="textm3">
+                                            <div style="font-size: 13px;">
+                                                @Model.AccountsSum .@Model.Currency (@(Model.AccountsCount))
+                                            </div>
+                                            <div>
+                                                <i class="fa-solid fa-arrow-right"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <img class="customer-img" src="/images/flower-money.jpg" alt="flower money" />
+                        </a>
+                        <a class="customer-card-cards customer-card-effect" asp-page="/Accounts/Cards" asp-route-customerId="@Model.Customer.CustomerId">
+                            <div class="customer-card-card">
+                                <div class="placeholder-boxm">
+                                    <div class="placeholder-textm">
+                                        <div class="textm1">CARDS</div>
+                                        <div class="textm2">CARDS</div>
+                                        <div class="textm3">
+                                            <div>
+                                                @Model.CardsCount
+                                            </div>
+                                            <div>
+                                                <i class="fa-solid fa-arrow-right"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <img class="customer-img" src="/images/holding-bank-cards.jpg" alt="person holding wallet" />
+                        </a>
+                        <a class="customer-card-cards customer-card-effect" asp-page="/Accounts/Loans" asp-route-customerId="@Model.Customer.CustomerId">
+                            <div class="customer-card-card">
+                                <div class="placeholder-boxm">
+                                    <div class="placeholder-textm">
+                                        <div class="textm1">LOANS</div>
+                                        <div class="textm2">LOANS</div>
+                                        <div class="textm3">
+                                            <div style="font-size: 13px;">
+                                                @Model.LoansTotal .@Model.Currency (@(Model.LoansCount))
+                                            </div>
+                                            <div>
+                                                <i class="fa-solid fa-arrow-right"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <img class="customer-img" src="/images/person-signing-papers.jpg" alt="payment machine" />
+                        </a>
+                    </div>
+                    <div class="customer-card-flex">
+                        <a class="customer-card-cards customer-card-effect" asp-page="/Accounts/PermanentOrders" asp-route-customerId="@Model.Customer.CustomerId">
+                            <div class="customer-card-card">
+                                <div class="placeholder-boxm">
+                                    <div class="placeholder-textm">
+                                        <div class="textm1">PAYMENTS</div>
+                                        <div class="textm2">PAYMENTS</div>
+                                        <div class="textm3">
+                                            <div>
+                                                @Model.PaymentsCount
+                                            </div>
+                                            <div>
+                                                <i class="fa-solid fa-arrow-right"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <img class="customer-img" src="/images/payment-machine.jpg" alt="person transferring money" />
+                        </a>
+                        <a class="customer-card-cards customer-card-effect" asp-page="/Accounts/Transactions" asp-route-customerId="@Model.Customer.CustomerId">
+                            <div class="customer-card-card">
+                                <div class="placeholder-boxm">
+                                    <div class="placeholder-textm">
+                                        <div class="textm1">TRANSACTIONS</div>
+                                        <div class="textm2">TRANSACTIONS</div>
+                                        <div class="textm3">
+                                            <div>
+                                                ALL
+                                            </div>
+                                            @Model.TransactionsCount
+                                            <div>
+                                                <i class="fa-solid fa-arrow-right"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <img class="customer-img" src="/images/person-transferring-money.jpg" alt="person signing papers" />
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

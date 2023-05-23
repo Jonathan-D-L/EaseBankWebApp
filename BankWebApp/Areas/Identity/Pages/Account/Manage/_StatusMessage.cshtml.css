@@ -1,0 +1,27 @@
+﻿.success-msg {
+    display: flex;
+    color: white;
+    border: 1px solid green;
+    background: rgba(0, 255, 0, 0.3);
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 5px 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
+.error-msg {
+    display: flex;
+    color: white;
+    border: 1px solid red;
+    background: rgba(255, 0, 0, 0.3);
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 5px 10px;
+    margin-bottom: 15px; 
+    border-radius: 5px;
+}

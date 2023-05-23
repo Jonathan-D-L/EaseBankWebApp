@@ -1,0 +1,92 @@
+﻿@page "{id}"
+@model BankWebApp.Pages.Users.UserEditModel
+@{
+    ViewData["Title"] = "- Edit User";
+    var errorMsg = ViewData["Message"]?.ToString();
+}
+
+<div class="row">
+    <div class="col-md-4">
+        <section class="section-fixed">
+            <div id="page-section-1" class="section-rel-fixed">
+                <div class="login-card">
+                    <div class="table-meta-flex">
+                        <a class="page-navigator-back-btn"
+                           asp-page="/Users/Users">
+                            <i class="fa-solid fa-arrow-left"></i>
+                        </a>
+                        <div class="page-name font-weight-4">
+                            Edit user
+                        </div>
+                      
+                    </div>
+                    @if (!string.IsNullOrWhiteSpace(errorMsg))
+                    {
+                    <div class="error-msg">
+                        @errorMsg
+                    </div>
+                    }
+                    <div class="form-box-container">
+                        <form method="post">
+                            <div class="form-box">
+                                <div class="form-box-inner">
+                                    <div>
+                                        <label asp-for="@Model.UpdateUser.Email"></label>
+                                    </div>
+                                    <div>
+                                        <input asp-for="@Model.UpdateUser.Email" />
+
+                                    </div>
+                                    <div class="form-box-span">
+                                        <span asp-validation-for="@Model.UpdateUser.Email"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-box">
+                                <div class="form-box-inner">
+                                    <div>
+                                        <label asp-for="@Model.UpdateUser.PhoneNumber"></label>
+                                    </div>
+                                    <div>
+                                        <input asp-for="@Model.UpdateUser.PhoneNumber" />
+                                    </div>
+                                    <div class="form-box-span">
+                                        <span asp-validation-for="@Model.UpdateUser.PhoneNumber"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-box">
+                                <div class="form-box-inner">
+                                    <div>
+                                        <label asp-for="@Model.Role">Role</label>
+                                    </div>
+                                    <div>
+                                        <select asp-for="@Model.Role" asp-items="@Model.RoleList">
+                                            <option value="">--Select Role--</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-box-span">
+                                        <span asp-validation-for="@Model.Role"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-box">
+                                <div class="form-box-inner">
+                                    <div class="form-btn">
+                                        <button class="font-weight-2" type="submit">Save</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+

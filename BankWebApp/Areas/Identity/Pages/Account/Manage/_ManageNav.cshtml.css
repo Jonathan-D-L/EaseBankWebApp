@@ -1,0 +1,11 @@
+﻿.user-nav {
+    display: flex;
+    list-style-type: none;
+    align-items: center;
+    justify-content: center;
+    color: #ffb121;
+    background: #1c1b22;
+    border: 1px solid #ffb121;
+    padding: 2px 4px;
+    border-radius: 5px;
+}

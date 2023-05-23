@@ -1,0 +1,368 @@
+﻿::deep a {
+    text-decoration: none;
+}
+
+/*healine hero*/
+
+.headline {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+    cursor: default;
+}
+
+    .headline .title {
+        font-weight: 700;
+        font-size: 45px;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 25px;
+        background-image: linear-gradient( -225deg, #8b4203 0%, #bc5700 20%, #ffb121 40%, #fff800 50%,#ffb121 60%, #bc5700 80%, #8b4203 100% );
+        background-size: auto auto;
+        background-clip: border-box;
+        background-size: 200% auto;
+        color: #fff;
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: textclip 15s linear infinite;
+        display: inline-block;
+    }
+
+@keyframes textclip {
+    to {
+        background-position: 200% center;
+    }
+}
+
+
+.headline .letters {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+    .headline .letters .letter {
+        font-size: 14px;
+        padding: 5px;
+        transition: transform .2s;
+    }
+
+        .headline .letters .letter:hover {
+            transform: scale(1.5);
+        }
+
+/*healine hero*/
+
+
+/*datalist display cards countries*/
+
+.data-display {
+    margin-top: 45px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+    .data-display .data-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-areas: "databox1"
+            "databox2"
+            "databox3"
+            "databox4";
+        gap: 30px;
+    }
+
+        .data-display .data-grid #data-box1 {
+            grid-area: databox1;
+        }
+
+        .data-display .data-grid #data-box2 {
+            grid-area: databox2;
+        }
+
+        .data-display .data-grid #data-box3 {
+            grid-area: databox3;
+        }
+
+        .data-display .data-grid #data-box4 {
+            grid-area: databox4;
+        }
+
+        .data-display .data-grid .data-box {
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            color: #d1e8e2;
+            border-radius: 6px;
+            border: 1px solid #ffb121;
+            background: #1c1b22;
+            backdrop-filter: blur(20px);
+            transition: all 0.6s;
+            position: relative;
+            padding: 0 35px;
+            box-shadow: 0 3px 6px 2px rgba(28, 27, 34, 0.5);
+        }
+
+
+.data-box:hover {
+    transform: scale(1.02);
+}
+
+.data-box:after {
+    content: "";
+    height: 100px;
+    width: 2px;
+    position: absolute;
+    left: -1px;
+    top: 65%;
+    transition: top, opacity;
+    transition-duration: 600ms;
+    transition-timing-function: ease;
+    background: linear-gradient( transparent, #ffb121 40%, #ffce74 50%, #ffb121 60%, transparent );
+    opacity: 0;
+}
+
+.data-box:after {
+    top: 60%;
+    opacity: 0;
+}
+
+.data-box:hover:after {
+    top: 10%;
+    opacity: 1;
+}
+
+.data-display .data-grid .flag-img {
+    position: relative;
+}
+
+    .data-display .data-grid .flag-img img {
+        height: 150px;
+        width: 200px;
+        object-fit: fill;
+        border-radius: 3px;
+        box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease-in-out;
+    }
+
+    .data-display .data-grid .flag-img .flag-text {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        border-radius: 3px;
+        top: 0;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 122px;
+        font-weight: 800;
+        color: white;
+        mix-blend-mode: multiply;
+        background: rgba(0, 0, 0, 0.7);
+        overflow: hidden;
+        opacity: 0;
+        transition: all 0.5s;
+    }
+
+.data-display .data-grid .data {
+    margin-top: 8px;
+    padding: 5px 15px;
+    color: #ffb121;
+    font-weight: 600;
+    font-size: 15px;
+    width: 100%;
+}
+
+    .data-display .data-grid .data .text-effect {
+        color: #ffb121;
+        box-shadow: inset 0 0 0 0 #ffb121;
+        margin: 0 -.25rem;
+        padding: 0 .25rem;
+        transition: all .35s ease-in-out;
+        border-radius: 3px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 3px 0;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        cursor: default;
+    }
+
+        /*  .data-display .data-grid .data .text-effect:hover {
+            color: #1c1b22;
+            box-shadow: inset 220px 0 0 0 #ffb121;
+            text-shadow: none;
+        }*/
+
+        .data-display .data-grid .data .text-effect .text-left {
+            margin-right: 16px;
+        }
+
+
+@media (min-width: 720px) {
+
+    .data-display .data-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas: "databox1 databox2";
+    }
+
+        .data-display .data-grid .data-box {
+            padding: 0 15px;
+        }
+
+        .data-display .data-grid #data-box-3,
+        .data-display .data-grid #data-box-4 {
+            display: none;
+        }
+}
+
+@media (min-width: 990px) {
+    .data-display {
+        margin-top: 70px;
+    }
+
+        .data-display .data-grid {
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-areas: "databox1 databox2 databox3";
+        }
+
+            .data-display .data-grid #data-box-3 {
+                display: flex;
+            }
+
+            .data-display .data-grid #data-box-4 {
+                display: none;
+            }
+}
+
+@media (min-width: 1200px) {
+    .headline .letters .letter {
+        font-size: 16px;
+    }
+
+    .headline .title {
+        font-size: 55px;
+    }
+
+    .data-display .data-grid {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-areas: "databox1 databox2 databox3 databox4";
+    }
+
+        .data-display .data-grid #data-box-3,
+        .data-display .data-grid #data-box-4 {
+            display: flex;
+        }
+}
+
+/*datalist display cards countries*/
+
+
+
+/*card effect*/
+.card-links {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 500px;
+    width: 1100px;
+    border: 1px solid #ffb121;
+   
+    border-radius: 5px;
+}
+
+::deep .placeholder-boxm {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 50px;
+}
+
+::deep .placeholder-textm {
+    font-size: 46px;
+    font-weight: 900;
+    cursor: default;
+    position: relative;
+}
+
+::deep .textm1 {
+    background-image: linear-gradient( -180deg, #ffb121 50%, transparent 50%);
+    background-size: auto auto;
+    background-clip: border-box;
+    background-size: 200% auto;
+    color: #fff;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: absolute;
+}
+
+::deep .textm2 {
+    background-image: linear-gradient( -180deg, transparent 50%, #ffb121 50%);
+    background-size: auto auto;
+    background-clip: border-box;
+    background-size: 200% auto;
+    color: #fff;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: all 0.2s;
+}
+
+::deep .card-link:hover .textm2 {
+    margin-top: 40px;
+    margin-bottom: 2px;
+}
+
+::deep .textm3 {
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    white-space: nowrap;
+    background: #1c1b22;
+    border-radius: 5px;
+    padding: 0 7px;
+    margin-left: 2px;
+    font-size: 22px;
+    width: 0%;
+    height: 30px;
+    top: 50%;
+    color: #ffb121;
+    transform: translateY(-50%) scaleY(0);
+    transition: all 0.1s;
+}
+
+::deep .card-link:hover .textm3 {
+    width: 99%;
+    transition: all 0.4s;
+}
+
+::deep .card-link:hover .textm3 {
+    transform: translateY(-50%) scaleY(1);
+}
+
+
+.card-img {
+    height: 160%;
+    width: auto;
+    top: 0;
+    left: 0;
+    position: absolute;
+    z-index: -1;
+    opacity: 0.8;
+
+}

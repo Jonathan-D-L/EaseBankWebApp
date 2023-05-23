@@ -1,0 +1,311 @@
+﻿.table-data-view {
+    color: #ffb121;
+    margin-top: -2%;
+}
+
+::deep i {
+    color: #ffb121;
+    padding-left: 5px;
+}
+
+h1 {
+    font-weight: 800;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    padding: 20px;
+}
+
+.table-data-all {
+    display: flex;
+    font-size: 13px;
+    align-items: center;
+    flex-direction: column;
+    color: #ffb121;
+    border: 1px solid #ffb121;
+    border-radius: 5px;
+    padding: 15px 20px;
+    padding-right: 65px;
+    background: rgba(28, 27, 34, 0.5);
+    backdrop-filter: blur(20px);
+    height: 557px;
+    box-shadow: 0 3px 6px 2px rgba(28, 27, 34, 0.5);
+}
+
+.table-meta {
+    display: grid;
+    grid-template-columns: 1fr 2fr 2fr 1fr 2fr 1fr 5fr 3fr 2fr 2fr;
+    border: 1px solid #ffb121;
+    border-radius: 5px;
+    width: 1110px;
+    margin-bottom: 2px;
+    background: #1c1b22;
+    box-shadow: 0 3px 6px 2px rgba(28, 27, 34, 0.5);
+}
+
+.table-meta-record {
+    position: relative;
+    display: flex;
+    border-radius: 5px;
+    padding: 7px 0;
+    padding-bottom: 20px;
+    justify-content: start;
+    align-items: center;
+    font-weight: 700;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    padding-left: 15px;
+    white-space: nowrap;
+}
+
+.pos-rel {
+    position: absolute;
+    display: flex;
+    top: 25px;
+    left: 10px;
+}
+
+
+.table-data {
+    display: grid;
+    grid-template-columns: 1fr 2fr 2fr 1fr 2fr 1fr 5fr 3fr 2fr 2fr;
+    border: 1px solid #ffb121;
+    margin-top: 5px;
+    color: #ffb121;
+    transition: all .2s ease-in-out;
+    border-radius: 5px;
+    padding: 2.3px 0;
+    width: 1110px;
+    position: relative;
+    background: #1c1b22;
+}
+
+.table-data-shadow {
+    position: absolute;
+    border-radius: 5px;
+    box-shadow: 0 5px 6px 2px rgba(28, 27, 34, 0.5);
+    width: 1110px;
+    height: 40px;
+}
+
+.table-data:hover {
+    color: #1c1b22;
+    background: #ffb121;
+}
+
+.table-data-record {
+    font-weight: 600;
+    margin: 5px;
+    padding: 0 30px;
+    padding-left: 10px;
+    white-space: nowrap;
+    min-width: 0;
+}
+
+.table-meta-tools {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #ffb121;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    padding: 5px 5px;
+    background: #1c1b22;
+    box-shadow: 0 3px 6px 2px rgba(28, 27, 34, 0.5);
+}
+
+.search-box ::deep form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    margin-right: 5px;
+}
+
+    .search-box ::deep form input {
+        background: transparent;
+        color: #ffb121;
+        border: 2px solid #ffb121;
+        border-radius: 5px 0 0 5px;
+        padding: 1px 5px;
+        outline: none;
+    }
+
+        .search-box ::deep form input:focus {
+            color: #1c1b22;
+            background: #ffb121;
+        }
+
+
+::deep form .clear-search a {
+    display: flex;
+    align-items: center;
+    border: 2px solid #ffb121;
+    border-left: none;
+    border-radius: 0 5px 5px 0;
+    padding: 1px 8px;
+    color: #ffb121;
+}
+
+::deep form .clear-search:hover a {
+    color: #1c1b22;
+    background: #ffb121;
+}
+
+
+
+
+::deep form .button {
+    border: 2px solid #ffb121;
+    border-radius: 5px;
+    background-color: transparent;
+    margin-left: 10px;
+    display: block;
+    padding: 1px 0;
+    padding-left: 1px;
+    padding-right: 5px;
+    transition: all 0.25s;
+}
+
+    ::deep form .button:hover {
+        background-color: #ffb121;
+    }
+
+        ::deep form .button:hover i {
+            color: #1c1b22;
+        }
+
+
+.page-name {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    white-space: nowrap;
+}
+
+.page-navigator-rel {
+    position: relative;
+}
+
+
+.page-navigator {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    top: -263px;
+    left: -55px;
+    border: 1px solid #ffb121;
+    border-radius: 5px;
+    padding: 5px;
+    height: 525px;
+    background: #1c1b22;
+    box-shadow: 0 3px 6px 2px rgba(28, 27, 34, 0.5);
+}
+
+.center-navigator-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cur-page {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    writing-mode: vertical-rl;
+    height: 100px;
+    cursor: default;
+}
+
+::deep .page-navigator-btn i {
+    border-radius: 5px;
+    padding: 4px 5px;
+    transition: all 0.25s;
+    margin: 5px 0;
+}
+
+    ::deep .page-navigator-btn i:hover {
+        color: #1c1b22;
+        background: #ffb121;
+    }
+
+.table-meta-record ::deep a i {
+    border-radius: 5px;
+    transition: all 0.25s;
+    margin-left: 3px;
+}
+
+    .table-meta-record ::deep a i:hover {
+        color: #1c1b22;
+        background: #ffb121;
+    }
+
+.fa-angle-up {
+    padding: 1px 2px;
+}
+
+.fa-angle-down {
+    padding: 1px 2px;
+}
+
+::deep .fa-angles-up {
+    padding: 1px 2px;
+}
+
+::deep .fa-angles-down {
+    padding: 1px 2px;
+}
+
+/*font*/
+
+.font-weight-1 {
+    font-weight: 600;
+}
+
+.font-weight-2 {
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.font-weight-4 {
+    font-weight: 700;
+    font-size: 32px;
+}
+
+/*font*/
+
+/*btn*/
+
+/*btn*/
+
+::deep a {
+    text-decoration: none;
+}
+
+::deep .page-navigator-back-btn i {
+    color: #ffb121;
+    font-size: 20px;
+    border: 2px solid #ffb121;
+    transition: all 0.25s;
+    margin: 10px 10px;
+    padding: 2px 4px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+    ::deep .page-navigator-back-btn i:hover {
+        color: #1c1b22;
+        background: #ffb121;
+    }
+
+/*btn*/
+
+
+
+.active-sort ::deep i {
+    color: #1c1b22;
+    background: #ffb121;
+    text-shadow: none;
+}
+
+.table-meta-flex {
+    display: flex;
+}

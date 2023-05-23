@@ -1,0 +1,348 @@
+﻿@page
+@model BankWebApp.Pages.Accounts.AccountModel
+@{
+    ViewData["Title"] = "- Client Account";
+    var alertMsg = TempData["Message"]?.ToString();
+}
+
+<section class="section-fixed">
+    <div id="page-section-1" class="section-rel-fixed">
+        <div class="customer-card">
+            <div class="tab-rel">
+                <div class="tab-buttons">
+                    <button id="transfer" class="tab-btn font-weight-1">TRANSFER</button>
+                    <button id="withdraw" class="tab-btn font-weight-1">WITHDRAW</button>
+                    <button id="deposit" class="tab-btn font-weight-1">DEPOSIT</button>
+                <div class="desc-type">
+                        Account type: @(Model.Account.Type.ToLower()).
+                </div>
+                </div>
+            </div>
+            <div class="customer-card-meta-flex">
+                <div class="form-container-1">
+                    <div class="customer-nav">
+                        <a class="page-navigator-back-btn"
+                           asp-page="/Accounts/Accounts" asp-route-customerId="@Model.Customer.CustomerId">
+                            <i class="fa-solid fa-arrow-left"></i>
+                        </a>
+                        <div class="font-weight-4">
+                            @Model.Customer.GivenName @Model.Customer.SurName
+                        </div>
+                        <img class="customer-img" src="/images/piggy-bank.jpg" alt="person signing papers" />
+                    </div>
+                           
+                </div>
+                <div class="form-container">
+                    <div class="font-weight-3 title-border-bottom customer-card-meta-flex-between">
+                        <div>
+                            Balance: @Model.Account.Balance @Model.Currency
+                        </div>
+                        <div>
+                            Account @Model.Account.AccountId
+                        </div>
+                    </div>
+                    <form method="post" id="display-form-withdraw">
+                        <div class="form-box">
+                            <div class="form-box-inner">
+                                <div class="form-box-inner-spacing">
+                                    <label class="label-style" asp-for="Amount">Withdraw</label>
+                                    <div>
+                                        <input class="form-space" asp-for="Amount" placeholder="amount" value="" data-val="Error message" />
+                                    </div>
+                                </div>
+                                <button type="submit" class="font-weight-1"
+                                        asp-route-accountId="@Model.Account.AccountId"
+                                        asp-route-customerId="@Model.Customer.CustomerId"
+                                        asp-page-handler="Withdraw">
+                                    Withdraw
+                                </button>
+                            </div>
+                        </div>
+                        @if (Model.Action == Action.Withdraw)
+                        {
+                            @if (!string.IsNullOrWhiteSpace(alertMsg))
+                            {
+                                <div class="form-success">
+                                    @alertMsg
+                                </div>
+                            }
+                            @if (ModelState["Amount"]?.Errors.Count > 0)
+                            {
+                                <div class="form-error">
+                                    <span asp-validation-for="Amount"></span>
+                                </div>
+                            }
+                        }
+                        else
+                        {
+                            <div style="height: 45px;"></div>
+                        }
+                    </form>
+                    <form method="post" id="display-form-deposit">
+                        <div class="form-box">
+                            <div class="form-box-inner">
+                                <div class="form-box-inner-spacing">
+                                    <label class="label-style" asp-for="Amount">Deposit</label>
+                                    <div>
+                                        <input class="form-space" asp-for="Amount" placeholder="amount" value="" data-val="Error message" />
+                                    </div>
+                                </div>
+                                <div>
+                                    <button type="submit" class="font-weight-1"
+                                            asp-route-accountId="@Model.Account.AccountId"
+                                            asp-route-customerId="@Model.Customer.CustomerId"
+                                            asp-page-handler="Deposit">
+                                        Deposit
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        @if (Model.Action == Action.Deposit)
+                        {
+                            @if (!string.IsNullOrWhiteSpace(alertMsg))
+                            {
+                                <div class="form-success">
+                                    @alertMsg
+                                </div>
+                            }
+                            @if (ModelState["Amount"]?.Errors.Count > 0)
+                            {
+                                <div class="form-error">
+                                    <span asp-validation-for="Amount"></span>
+                                </div>
+                            }
+                        }
+                        else
+                        {
+                            <div style="height: 45px;"></div>
+                        }
+                    </form>
+
+                    <form method="post" id="display-form-transfer">
+                        <div class="form-box">
+                            <div class="form-box-inner">
+                                <div class="form-box-inner-spacing">
+                                    <label class="" asp-for="Amount">From - Account @Model.Account.AccountId</label>
+                                    <div>
+                                        <input class="form-space-2" asp-for="Amount" placeholder="amount" value="" data-val="Error message" />
+                                    </div>
+                                </div>
+                                <div class="form-box-inner-spacing">
+                                    <label class="" asp-for="Q">To - Account</label>
+                                    <div class="form-box-search-select">
+                                        <div class="input-for-q">
+                                            <input class="form-space-1" asp-for="Q" placeholder="Search" />
+                                        </div>
+                                        <div class="select-for-q" id="select-for-q">
+                                            <select class="form-space-2" asp-for="ToAccountId" asp-items="@Model.AccountOptions"></select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <button type="submit" class="font-weight-1"
+                                            asp-route-accountId="@Model.Account.AccountId"
+                                            asp-route-customerId="@Model.Customer.CustomerId"
+                                            asp-route-accountId="@Model.Transactions"
+                                            asp-route-q="@Model.Q"
+                                            asp-page-handler="Transfer">
+                                        Transfer
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        @if (Model.Action == Action.Transfer)
+                        {
+                            @if (!string.IsNullOrWhiteSpace(alertMsg))
+                            {
+                                <div class="form-success">
+                                    @alertMsg
+                                </div>
+                            }
+                            @if (!ModelState.IsValid)
+                            {
+                                <div class="form-error">
+                                    <span asp-validation-for="Amount"></span>
+                                    <span asp-validation-for="ToAccountId"></span>
+                                </div>
+                            }
+                        }
+                    </form>
+                </div>
+            </div>
+            <div class="border-table">
+                <div class="title-custom-padding title-border-bottom reverse-color">
+                    <div class="font-weight-2">
+                        TRANSACTION HISTORY - ACCOUNT @Model.Account.AccountId
+                    </div>
+                </div>
+                <div class="spacing-outer-top title-border-bottom font-weight-1">
+                    <div>From</div>
+                    <div>To</div>
+                    <div>Amount</div>
+                    <div>Bank</div>
+                    <div>Date</div>
+                    <div>Type</div>
+                    <div>Operation Message</div>
+                    <div>Symbol</div>
+                    <div>Transaction</div>
+                    <div>New Balance</div>
+                </div>
+                <div style="height: 240px; overflow-y: scroll;" class="scroll-box-transactions">
+                    <table id="posts-table" style="width: 100%">
+                        <thead>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+                <a class="button-show-more font-weight-2" href="javascript:showMore();" style="width: 100%">Show More</a>
+                <input type="hidden" id="currency" value="@Model.Currency" />
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts
+    {
+
+    <script>
+        pageNum = 1;
+        CustomerId = @Model.Customer.CustomerId;
+        AccountId = @Model.Account.AccountId;
+        document.addEventListener("DOMContentLoaded", function () {
+            showMore();
+        });
+        function showMore() {
+            fetch(`/Accounts/Account?handler=ShowMore&customerId=${CustomerId}&accountId=${AccountId}&pageNum=${pageNum}`)
+                .then((response) => response.json())
+                .then((json) => {
+                    pageNum = pageNum + 1;
+                    json.transactions.forEach(drawElements);
+                    const container = document.querySelector('.scroll-box-transactions');
+                    container.scrollTop = container.scrollHeight - container.clientHeight;
+                })
+        }
+        function drawElements(element) {
+            let bankValue = element.bank ? element.bank : "~";
+            let typeValue = element.type ? element.type : "~";
+            let accountValue = element.account ? element.account : "~";
+            let symbolValue = element.symbol ? element.symbol : "~";
+            let currency = document.getElementById("currency").value;
+            document.querySelector('#posts-table tbody').innerHTML +=
+                `<tr class="spacing-outer">
+                    <td>${element.accountId}</td>
+                    <td>${accountValue}</td>
+                    <td>${currency} ${element.amount}</td>
+                    <td>${bankValue}</td>
+                    <td>${new Date(element.date).toLocaleDateString(undefined, { dateStyle: 'short' })}</td>
+                    <td>${typeValue}</td>
+                    <td>${element.operation}</td>
+                    <td>${symbolValue}</td>
+                    <td>${element.transactionId}</td>
+                    <td>${currency} ${element.balance} </td>
+                </tr>
+                <tr class="spacing"></tr>`;
+        }
+
+
+        $(document).ready(function () {
+            $('#Q').on('keyup', function () {
+                var q = $(this).val();
+                $.ajax({
+                    url: '/Accounts/Account?handler=FetchInfo',
+                    data: { q: q },
+                    success: function (result) {
+                        var optionsHtml = '';
+                        optionsHtml = '<option value=""></option>' + optionsHtml;
+                        if (result.length === 0) {
+                            $('#select-for-q').css('top', '0px');
+                            $.each(result, function (index, option) {
+                                optionsHtml += '<option value="' + option.value + '">' + option.text + '</option>';
+                            });
+                            $('#ToAccountId').html(optionsHtml);
+                            $('#ToAccountId').prop('size', Math.min(result.length, 10));
+                        } else {
+                            $('#select-for-q').css('top', '28px');
+                            $.each(result, function (index, option) {
+                                optionsHtml += '<option value="' + option.value + '">' + option.text + '</option>';
+                            });
+                            $('#ToAccountId').html(optionsHtml);
+                            $('#ToAccountId').prop('size', Math.min(result.length, 10));
+                        }
+                    }
+                });
+            });
+            $('#ToAccountId').on('change', function () {
+                $(this).prop('size', 1);
+                $('#select-for-q').css('top', '0px');
+            });
+            $('#Q').on('click', function () {
+                $(this).val('');
+            });
+        });
+
+        const transferBtn = document.getElementById('transfer');
+        const withdrawBtn = document.getElementById('withdraw');
+        const depositBtn = document.getElementById('deposit');
+
+        const transferForm = document.getElementById('display-form-transfer');
+        const withdrawForm = document.getElementById('display-form-withdraw');
+        const depositForm = document.getElementById('display-form-deposit');
+
+        const setActiveBtn = (activeBtn) => {
+            transferBtn.classList.remove('tab-btn-active');
+            withdrawBtn.classList.remove('tab-btn-active');
+            depositBtn.classList.remove('tab-btn-active');
+            activeBtn.classList.add('tab-btn-active');
+        };
+
+        const prevFormState = sessionStorage.getItem('formState');
+        if (prevFormState === 'transfer') {
+            transferForm.style.display = 'block';
+            withdrawForm.style.display = 'none';
+            depositForm.style.display = 'none';
+            setActiveBtn(transferBtn);
+        } else if (prevFormState === 'withdraw') {
+            withdrawForm.style.display = 'block';
+            transferForm.style.display = 'none';
+            depositForm.style.display = 'none';
+            setActiveBtn(withdrawBtn);
+        } else if (prevFormState === 'deposit') {
+            depositForm.style.display = 'block';
+            transferForm.style.display = 'none';
+            withdrawForm.style.display = 'none';
+            setActiveBtn(depositBtn);
+        } else {
+            transferForm.style.display = 'block';
+            withdrawForm.style.display = 'none';
+            depositForm.style.display = 'none';
+            setActiveBtn(transferBtn);
+        }
+
+        transferBtn.addEventListener('click', () => {
+            sessionStorage.setItem('formState', 'transfer');
+            transferForm.style.display = 'block';
+            withdrawForm.style.display = 'none';
+            depositForm.style.display = 'none';
+            setActiveBtn(transferBtn);
+        });
+
+        withdrawBtn.addEventListener('click', () => {
+            sessionStorage.setItem('formState', 'withdraw');
+            withdrawForm.style.display = 'block';
+            transferForm.style.display = 'none';
+            depositForm.style.display = 'none';
+            setActiveBtn(withdrawBtn);
+        });
+
+        depositBtn.addEventListener('click', () => {
+            sessionStorage.setItem('formState', 'deposit');
+            depositForm.style.display = 'block';
+            transferForm.style.display = 'none';
+            withdrawForm.style.display = 'none';
+            setActiveBtn(depositBtn);
+        });
+
+    </script>
+    <partial name="Shared/_ValidationScriptsPartial" />
+}
